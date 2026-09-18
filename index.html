@@ -1,73 +1,4344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>HelpHub - Community Help Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HelpHub</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;
-                             background:linear-gradient(135deg,#080b14,#151b32,#211333);color:#f8fafc;
-                             min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.nav{height:70px;padding:0 28px;display:flex;justify-content:space-between;align-items:center;background:#080b14e8;border-bottom:1px solid #ffffff1c;position:sticky;top:0;z-index:10;backdrop-filter:blur(15px)}.logo{font-size:25px;font-weight:900}.logo span{color:#818cf8}.navright{display:flex;gap:8px;align-items:center}.wrap{max-width:1150px;margin:auto;padding:25px}.hero{text-align:center;padding:60px 10px 35px}.hero h1{font-size:65px;margin:12px 0;background:linear-gradient(90deg,#fff,#a5b4fc,#c4b5fd);color:transparent;background-clip:text}.hero p{max-width:700px;margin:auto;color:#94a3b8;font-size:18px;line-height:1.7}.badge{display:inline-block;background:#1e293b;border:1px solid #475569;padding:5px 10px;border-radius:30px;font-size:12px;color:#c7d2fe;font-weight:700}.auth{max-width:450px;margin:30px auto;background:#111827ee;border:1px solid #ffffff1c;border-radius:22px;padding:25px;box-shadow:0 20px 60px #0005}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#0b1220;padding:4px;border-radius:12px;margin-bottom:18px}.tab{border:0;background:transparent;color:#94a3b8;padding:11px;border-radius:9px;font-weight:700}.tab.active{background:#303958;color:#fff}.group{margin:13px 0;text-align:left}.group label{display:block;font-size:13px;font-weight:700;color:#cbd5e1;margin-bottom:6px}input,select,textarea{width:100%;padding:12px;border-radius:11px;border:1px solid #ffffff1c;background:#0b1220;color:#fff;outline:none}textarea{min-height:100px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px #6366f122}.btn{border:0;border-radius:11px;padding:10px 15px;font-weight:800;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white}.dark{background:#20293a;color:white;border:1px solid #ffffff1c}.danger{background:#40171d;color:#fecaca;border:1px solid #7f1d1d}.success{background:#12351f;color:#bbf7d0;border:1px solid #166534}.full{width:100%}.head{display:flex;justify-content:space-between;align-items:center;margin:20px 0;gap:15px}.head h2{margin:6px 0;font-size:30px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat,.card{background:#111827e8;border:1px solid #ffffff1c;border-radius:18px;padding:19px}.stat small{color:#94a3b8}.stat strong{display:block;font-size:30px;margin-top:6px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.card{margin-bottom:18px}.card h3{margin-top:0}.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:30px auto}.mode{padding:30px;border:1px solid #ffffff1c;border-radius:20px;background:linear-gradient(145deg,#121a2b,#0e1421);transition:.25s}.mode:hover{transform:translateY(-5px);border-color:#6366f1}.icon{font-size:42px}.mode p,.muted{color:#94a3b8;line-height:1.6}.request{padding:15px;border:1px solid #ffffff1a;border-radius:14px;background:#0d1422;margin:11px 0}.rhead{display:flex;justify-content:space-between;gap:8px}.request h4{margin:0 0 6px;font-size:17px}.meta{font-size:12px;color:#94a3b8;line-height:1.7}.desc{margin:9px 0;color:#dbeafe;line-height:1.5}.status{padding:4px 8px;border-radius:20px;font-size:10px;font-weight:900;height:max-content}.open{background:#172554;color:#bfdbfe}.assigned{background:#3b2b0c;color:#fde68a}.completed{background:#12351f;color:#bbf7d0}.cancelled{background:#3a171d;color:#fecaca}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.chat{height:390px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;background:#080d18;border-radius:12px;padding:10px;margin-bottom:9px}.msg{max-width:78%;background:#1b263a;padding:9px 11px;border-radius:14px;margin:7px 0}.mine{margin-left:auto;background:#4338ca}.msg small{display:block;font-size:9px;color:#cbd5e1;margin-top:4px}.send{display:flex;gap:7px}.send input{flex:1}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:11px;border-bottom:1px solid #ffffff17;text-align:left;font-size:12px}.table th{color:#c7d2fe}.empty{text-align:center;color:#64748b;padding:25px}.footer{text-align:center;color:#64748b;padding:30px}@media(max-width:800px){.grid,.modegrid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.nav{padding:0 14px}.wrap{padding:15px}}@media(max-width:500px){.stats{grid-template-columns:1fr}.hero h1{font-size:48px}.head{align-items:flex-start;flex-direction:column}}
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Segoe UI,sans-serif;
+    background:linear-gradient(135deg,#080b14,#151b32,#211333);
+    color:white;
+    min-height:100vh;
+}
+
+button,input,select,textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.nav{
+    height:70px;
+    padding:0 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#080b14ee;
+    border-bottom:1px solid #ffffff20;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#818cf8;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:25px;
+}
+
+.hero{
+    text-align:center;
+    padding:55px 10px 30px;
+}
+
+.hero h1{
+    font-size:65px;
+    margin:15px 0;
+    background:linear-gradient(90deg,#fff,#a5b4fc,#c4b5fd);
+    color:transparent;
+    background-clip:text;
+}
+
+.hero p{
+    color:#94a3b8;
+    font-size:18px;
+    line-height:1.6;
+    max-width:700px;
+    margin:auto;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:30px;
+    background:#1e293b;
+    border:1px solid #475569;
+    color:#c7d2fe;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.auth-box{
+    max-width:450px;
+    margin:35px auto;
+    padding:25px;
+    background:#111827ee;
+    border:1px solid #ffffff20;
+    border-radius:20px;
+    box-shadow:0 20px 60px #0006;
+}
+
+.tabs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+    background:#0b1220;
+    padding:5px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.tab{
+    border:0;
+    padding:12px;
+    border-radius:9px;
+    background:transparent;
+    color:#94a3b8;
+    font-weight:bold;
+}
+
+.tab.active{
+    background:#303958;
+    color:white;
+}
+
+.form-group{
+    margin:14px 0;
+    text-align:left;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    color:#cbd5e1;
+    font-size:13px;
+    font-weight:bold;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ffffff20;
+    background:#0b1220;
+    color:white;
+    outline:none;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#6366f1;
+}
+
+.btn{
+    border:0;
+    padding:10px 16px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.primary{
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    color:white;
+}
+
+.dark{
+    background:#20293a;
+    color:white;
+    border:1px solid #ffffff20;
+}
+
+.danger{
+    background:#451a1f;
+    color:#fecaca;
+}
+
+.success{
+    background:#12351f;
+    color:#bbf7d0;
+}
+
+.warning{
+    background:#3b2b0c;
+    color:#fde68a;
+}
+
+.full{
+    width:100%;
+}
+
+.heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+}
+
+.heading h2{
+    margin:7px 0;
+    font-size:30px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:#111827e8;
+    border:1px solid #ffffff20;
+    border-radius:16px;
+    padding:18px;
+}
+
+.stat small{
+    color:#94a3b8;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    margin-top:7px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:18px;
+}
+
+.card{
+    background:#111827e8;
+    border:1px solid #ffffff20;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.mode-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    max-width:900px;
+    margin:30px auto;
+}
+
+.mode-card{
+    padding:30px;
+    background:#111827;
+    border:1px solid #ffffff20;
+    border-radius:20px;
+    transition:.25s;
+}
+
+.mode-card:hover{
+    transform:translateY(-5px);
+    border-color:#6366f1;
+}
+
+.mode-icon{
+    font-size:45px;
+}
+
+.mode-card p{
+    color:#94a3b8;
+    line-height:1.6;
+}
+
+.request{
+    background:#0d1422;
+    border:1px solid #ffffff1a;
+    padding:15px;
+    border-radius:14px;
+    margin:10px 0;
+}
+
+.request-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.request h4{
+    margin:0 0 7px;
+}
+
+.meta{
+    color:#94a3b8;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.description{
+    color:#dbeafe;
+    margin:10px 0;
+    line-height:1.5;
+}
+
+.status{
+    height:max-content;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.open{
+    background:#172554;
+    color:#bfdbfe;
+}
+
+.assigned{
+    background:#3b2b0c;
+    color:#fde68a;
+}
+
+.completed{
+    background:#12351f;
+    color:#bbf7d0;
+}
+
+.blocked{
+    background:#451a1f;
+    color:#fecaca;
+}
+
+.active{
+    background:#12351f;
+    color:#bbf7d0;
+}
+
+.actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.empty{
+    text-align:center;
+    color:#64748b;
+    padding:25px;
+}
+
+.table-container{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ffffff17;
+    text-align:left;
+    font-size:13px;
+}
+
+th{
+    color:#c7d2fe;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:#000b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:100;
+}
+
+.modal-box{
+    width:min(850px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#111827;
+    border:1px solid #ffffff25;
+    border-radius:20px;
+    padding:22px;
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:15px 0;
+}
+
+.info{
+    background:#0b1220;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ffffff15;
+}
+
+.info b{
+    display:block;
+    font-size:22px;
+    margin-top:5px;
+}
+
+.chat-box{
+    height:390px;
+    display:flex;
+    flex-direction:column;
+}
+
+.messages{
+    flex:1;
+    overflow:auto;
+    background:#080d18;
+    border-radius:12px;
+    padding:10px;
+    margin-bottom:8px;
+}
+
+.message{
+    max-width:75%;
+    padding:9px 11px;
+    margin:7px 0;
+    border-radius:13px;
+    background:#1b263a;
+}
+
+.message.mine{
+    margin-left:auto;
+    background:#4338ca;
+}
+
+.message small{
+    display:block;
+    font-size:9px;
+    margin-top:4px;
+    color:#cbd5e1;
+}
+
+.send-box{
+    display:flex;
+    gap:8px;
+}
+
+.send-box input{
+    flex:1;
+}
+
+@media(max-width:800px){
+
+    .grid,
+    .mode-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .nav{
+        padding:0 15px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav-right .badge{
+        display:none;
+    }
+
+}
 </style>
 </head>
-<body><div id="app"></div>
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import{getDatabase,ref,set,get,push,update,remove,onValue}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
-  const firebaseConfig={apiKey:"AIzaSyAGSX7VLwTK3hdnm2dEURCMG8YchDE8XTE",
-                        authDomain:"travel-81ab4.firebaseapp.com",
-                        databaseURL:"https://travel-81ab4-default-rtdb.firebaseio.com",
-                        projectId:"travel-81ab4",
-                        storageBucket:"travel-81ab4.firebasestorage.app",
-                        messagingSenderId:"978469309246",
-                        appId:"1:978469309246:web:2cee2175426d4a91063a6f",
-                        measurementId:"G-T0GBMSE60Z"};
-const app=initializeApp(firebaseConfig),
-  auth=getAuth(app),
-  db=getDatabase(app);
-  let user=null,
-    profile=null,
-    offs=[];const $=x=>document.getElementById(x),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])),time=x=>x?new Date(x).toLocaleString():'—';function clear(){offs.forEach(x=>x&&x());offs=[]}
-function nav(){return`<nav class="nav">
-<div class="logo">Help<span>Hub</span> 🤝</div>
-<div class="navright">${profile?`<span class="badge">${esc(profile.name)} · ${profile.role==='admin'?'Admin':profile.mode==='volunteer'?'Volunteer':'Member'}</span><button class="btn dark" id="account">Account</button>
-<button class="btn danger" id="logout">Logout</button>`:''}</div></nav>`}
-function landing(){clear();$('app').innerHTML=nav()+`<main class="wrap"><section class="hero"><span class="badge">COMMUNITY • HELP • VOLUNTEER</span><h1>HelpHub</h1>
-<p>Connect people who need help with people who are ready to help.</p>
-<div class="auth"><div class="tabs"><button class="tab active" id="lt">Login</button><button class="tab" id="rt">Register</button></div><div id="af"></div></div></section><div class="footer">HelpHub </div></main>`;loginForm();$('lt').onclick=loginForm;$('rt').onclick=registerForm}
-function loginForm(){$('lt').classList.add('active');$('rt').classList.remove('active');$('af').innerHTML=`<div class="group"><label>Email</label>
-<input id="email" type="email" placeholder="you@example.com"></div><div class="group"><label>Password</label><input id="pass" type="password"></div>
-<button class="btn primary full" id="auth">Login</button>`;$('auth').onclick=authLogin}
-function registerForm(){$('rt').classList.add('active');$('lt').classList.remove('active');$('af').innerHTML=`<div class="group"><label>Name</label>
-<input id="name" placeholder="Your name"></div>
-<div class="group"><label>Phone</label>
-<input id="phone" placeholder="Mobile"></div>
-<div class="group"><label>Email</label><input id="email" type="email"></div>
-<div class="group"><label>Password</label>
-<input id="pass" type="password" placeholder="Minimum 6 characters"></div>
-<button class="btn primary full" id="auth">Create Account</button>`;$('auth').onclick=authRegister}
-async function authLogin(){try{await signInWithEmailAndPassword(auth,$('email').value.trim(),$('pass').value)}catch(e){alert(e.message)}}
-async function authRegister(){try{let n=$('name').value.trim(),p=$('phone').value.trim(),e=$('email').value.trim();if(!n)return alert('Enter your name');let c=await createUserWithEmailAndPassword(auth,e,$('pass').value);await set(ref(db,'users/'+c.user.uid),{uid:c.user.uid,name:n,phone:p,email:e,role:'member',mode:'help',status:'active',createdAt:Date.now()})}catch(e){alert(e.message)}}
-onAuthStateChanged(auth,async u=>{user=u;if(!u){profile=null;landing();return}let s=await get(ref(db,'users/'+u.uid));if(!s.exists())await set(ref(db,'users/'+u.uid),{uid:u.uid,name:u.email.split('@')[0],email:u.email,role:'member',mode:'help',status:'active',createdAt:Date.now()});profile=(await get(ref(db,'users/'+u.uid))).val();if(profile.status==='blocked'){alert('Your account is blocked by admin.');return signOut(auth)}show()});
-$('app').addEventListener('click',e=>{if(e.target.id==='logout')signOut(auth);if(e.target.id==='account')account()});
-function account(){clear();$('app').innerHTML=nav()+`<main class="wrap"><div class="head"><div><span class="badge">ACCOUNT</span><h2>Choose Your Mode</h2></div><button class="btn dark" id="back">← Dashboard</button></div><div class="modegrid"><div class="mode"><div class="icon">🆘</div><h2>I Want Help</h2><p>Create a help request and accept a volunteer.</p><button class="btn primary full" id="hm">Use Help Mode</button></div><div class="mode"><div class="icon">🙋</div><h2>I Want to Help</h2><p>Find open requests and offer your help.</p><button class="btn primary full" id="vm">Use Volunteer Mode</button></div></div></main>`;$('back').onclick=show;$('hm').onclick=()=>mode('help');$('vm').onclick=()=>mode('volunteer')}
-async function mode(m){await update(ref(db,'users/'+user.uid),{mode:m});profile.mode=m;show()}
-function show(){profile.role==='admin'?admin():profile.mode==='volunteer'?volunteer():help()}
-function help(){clear();$('app').innerHTML=nav()+`<main class="wrap"><div class="head"><div><span class="badge">HELP MODE</span><h2>Need Help?</h2></div></div><div class="stats"><div class="stat"><small>My Requests</small><strong id="c1">0</strong></div><div class="stat"><small>Assigned</small><strong id="c2">0</strong></div><div class="stat"><small>Completed</small><strong id="c3">0</strong></div><div class="stat"><small>Current Mode</small><strong style="font-size:18px">HELP</strong></div></div><div class="grid"><section class="card"><h3>📝 Create Request</h3><div class="group"><label>Title</label><input id="title" placeholder="Need help with..."></div><div class="group"><label>Category</label><select id="cat"><option>General</option><option>Education</option><option>Food</option><option>Transport</option><option>Technology</option><option>Senior Citizen</option><option>Medical Support</option><option>Other</option></select></div><div class="group"><label>Description</label><textarea id="desc"></textarea></div><div class="group"><label>Location</label><input id="loc"></div><div class="group"><label>Urgency</label><select id="urg"><option>Normal</option><option>High</option><option>Urgent</option></select></div><button class="btn primary full" id="post">Post Help Request</button></section><section class="card"><h3>📋 My Requests</h3><div id="mine"><div class="empty">Loading...</div></div></section></div><section class="card"><h3>🤝 Volunteer Offers</h3><div id="offers"><div class="empty">Offers appear here in real time.</div></div></section><section class="card hidden" id="chat"><h3>💬 Chat</h3><div id="chatbox"></div></section></main>`;$('post').onclick=post;listenHelp()}
-async function post(){let t=$('title').value.trim(),d=$('desc').value.trim(),l=$('loc').value.trim();if(!t||!d||!l)return alert('Fill all required fields.');let id=push(ref(db,'helpRequests')).key;await set(ref(db,'helpRequests/'+id),{requestId:id,title:t,description:d,category:$('cat').value,location:l,urgency:$('urg').value,createdBy:user.uid,requesterName:profile.name,status:'open',volunteerId:'',volunteerName:'',createdAt:Date.now()});$('title').value=$('desc').value=$('loc').value='';alert('Request posted!')}
-function listenHelp(){let off=onValue(ref(db,'helpRequests'),async s=>{let a=Object.values(s.val()||{}).filter(x=>x.createdBy===user.uid).sort((a,b)=>b.createdAt-a.createdAt);$('c1').textContent=a.length;$('c2').textContent=a.filter(x=>x.status==='assigned').length;$('c3').textContent=a.filter(x=>x.status==='completed').length;$('mine').innerHTML=a.length?a.map(card).join(''):'<div class="empty">No requests yet.</div>';a.forEach(r=>offers(r.requestId));bindButtons()});offs.push(off)}
-function card(r){return`<div class="request"><div class="rhead"><div><h4>${esc(r.title)}</h4><div class="meta">${esc(r.category)} • ${esc(r.location)} • ${esc(r.urgency)} • ${time(r.createdAt)}</div></div><span class="status ${r.status}">${esc(r.status)}</span></div><div class="desc">${esc(r.description)}</div>${r.volunteerName?`<div class="meta">Volunteer: <b>${esc(r.volunteerName)}</b></div>`:''}<div class="actions">${r.status==='assigned'?`<button class="btn primary" data-chat="${r.requestId}">Chat</button><button class="btn success" data-done="${r.requestId}">Completed</button>`:''}</div></div>`}
-async function offers(id){let o=(await get(ref(db,'offers/'+id))).val()||{},r=(await get(ref(db,'helpRequests/'+id))).val();if(!r||r.createdBy!==user.uid)return;let arr=Object.entries(o);let el=$('offers');if(!el)return;el.innerHTML=arr.length?arr.map(([vid,x])=>`<div class="request"><div class="rhead"><h4>🙋 ${esc(x.volunteerName)}</h4><span class="status ${x.status==='accepted'?'assigned':'open'}">${esc(x.status||'pending')}</span></div><div class="desc">${esc(x.message)}</div><div class="actions">${!r.volunteerId&&x.status!=='rejected'?`<button class="btn success" data-accept="${id}|${vid}">Accept</button>`:''}${r.volunteerId===vid?`<button class="btn primary" data-chat="${id}">Chat</button>`:''}</div></div>`).join(''):'<div class="empty">No volunteer offers yet.</div>';bindButtons()}
-async function accept(id,vid){let o=(await get(ref(db,'offers/'+id+'/'+vid))).val();if(!o)return;await update(ref(db,'helpRequests/'+id),{status:'assigned',volunteerId:vid,volunteerName:o.volunteerName});await update(ref(db,'offers/'+id+'/'+vid),{status:'accepted'});let all=(await get(ref(db,'offers/'+id))).val()||{};for(let x in all)if(x!==vid)await update(ref(db,'offers/'+id+'/'+x),{status:'rejected'});alert('Volunteer accepted!')}
-async function done(id){await update(ref(db,'helpRequests/'+id),{status:'completed',completedAt:Date.now()})}
-function bindButtons(){document.querySelectorAll('[data-accept]').forEach(b=>b.onclick=()=>{let[a,c]=b.dataset.accept.split('|');accept(a,c)});document.querySelectorAll('[data-chat]').forEach(b=>b.onclick=()=>chat(b.dataset.chat));document.querySelectorAll('[data-done]').forEach(b=>b.onclick=()=>done(b.dataset.done));document.querySelectorAll('[data-offer]').forEach(b=>b.onclick=()=>offer(b.dataset.offer));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>del(b.dataset.delete));document.querySelectorAll('[data-block]').forEach(b=>b.onclick=()=>block(b.dataset.block))}
-function volunteer(){clear();$('app').innerHTML=nav()+`<main class="wrap"><div class="head"><div><span class="badge">VOLUNTEER MODE</span><h2>Find People to Help</h2></div></div><section class="card"><div class="group"><label>Search</label><input id="search" placeholder="Title, category or location"></div></section><div class="grid"><section class="card"><h3>🌍 Open Requests</h3><div id="open"><div class="empty">Loading...</div></div></section><section class="card"><h3>📌 My Tasks</h3><div id="tasks"><div class="empty">Loading...</div></div></section></div><section class="card hidden" id="chat"><h3>💬 Chat</h3><div id="chatbox"></div></section></main>`;let off=onValue(ref(db,'helpRequests'),s=>renderVol(s.val()||{}));offs.push(off);$('search').oninput=()=>renderVol(window.requests||{})}
-function renderVol(data){window.requests=data;let q=($('search')?.value||'').toLowerCase(),a=Object.values(data);let open=a.filter(r=>r.status==='open'&&r.createdBy!==user.uid&&(r.title+' '+r.category+' '+r.location).toLowerCase().includes(q)),mine=a.filter(r=>r.volunteerId===user.uid);$('open').innerHTML=open.length?open.map(r=>`<div class="request"><div class="rhead"><div><h4>${esc(r.title)}</h4><div class="meta">${esc(r.category)} • ${esc(r.location)} • ${esc(r.urgency)}</div></div><span class="status open">OPEN</span></div><div class="desc">${esc(r.description)}</div><div class="meta">Requested by ${esc(r.requesterName)}</div><div class="actions"><button class="btn primary" data-offer="${r.requestId}">Offer Help</button></div></div>`).join(''):'<div class="empty">No open requests.</div>';$('tasks').innerHTML=mine.length?mine.map(r=>`<div class="request"><div class="rhead"><h4>${esc(r.title)}</h4><span class="status ${r.status}">${esc(r.status)}</span></div><div class="meta">Requester: ${esc(r.requesterName)} • ${esc(r.location)}</div><div class="actions">${r.status==='assigned'?`<button class="btn primary" data-chat="${r.requestId}">Chat</button><button class="btn success" data-done="${r.requestId}">Completed</button>`:''}</div></div>`).join(''):'<div class="empty">No assigned tasks.</div>';bindButtons()}
-async function offer(id){let m=prompt('Message to requester:');if(m===null)return;await set(ref(db,'offers/'+id+'/'+user.uid),{volunteerId:user.uid,volunteerName:profile.name,message:m||'I can help with this request.',status:'pending',createdAt:Date.now()});alert('Offer sent!')}
-function chat(id){$('chat').classList.remove('hidden');$('chatbox').innerHTML=`<div class="chat"><div class="messages" id="msgs"></div><div class="send"><input id="msg" placeholder="Type a message..."><button class="btn primary" id="send">Send</button></div></div>`;$('send').onclick=()=>send(id);$('msg').onkeydown=e=>{if(e.key==='Enter')send(id)};let off=onValue(ref(db,'chats/'+id),s=>{let a=Object.values(s.val()||{}).sort((x,y)=>x.timestamp-y.timestamp);$('msgs').innerHTML=a.length?a.map(m=>`<div class="msg ${m.senderId===user.uid?'mine':''}"><b>${esc(m.senderName)}</b><div>${esc(m.message)}</div><small>${time(m.timestamp)}</small></div>`).join(''):'<div class="empty">Start the conversation.</div>';$('msgs').scrollTop=$('msgs').scrollHeight});offs.push(off)}
-async function send(id){let m=$('msg').value.trim();if(!m)return;let k=push(ref(db,'chats/'+id)).key;await set(ref(db,'chats/'+id+'/'+k),{senderId:user.uid,senderName:profile.name,message:m,timestamp:Date.now()});$('msg').value=''}
-function admin(){clear();$('app').innerHTML=nav()+`<main class="wrap"><div class="head"><div><span class="badge">ADMIN</span><h2>Control Panel</h2></div></div><div class="stats"><div class="stat"><small>Users</small><strong id="au">0</strong></div><div class="stat"><small>Volunteers</small><strong id="av">0</strong></div><div class="stat"><small>Requests</small><strong id="ar">0</strong></div><div class="stat"><small>Completed</small><strong id="ad">0</strong></div></div><section class="card"><h3>👥 Users</h3><div class="tablewrap"><table class="table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Mode</th><th>Status</th><th>Action</th></tr></thead><tbody id="ut"></tbody></table></div></section><section class="card"><h3>📋 Requests</h3><div id="rtab"></div></section></main>`;let uo=onValue(ref(db,'users'),s=>{let a=Object.values(s.val()||{});$('au').textContent=a.length;$('av').textContent=a.filter(x=>x.mode==='volunteer').length;$('ut').innerHTML=a.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.email)}</td><td>${esc(x.role)}</td><td>${esc(x.mode||'help')}</td><td>${esc(x.status||'active')}</td><td>${x.uid===user.uid?'—':`<button class="btn ${x.status==='blocked'?'success':'danger'}" data-block="${x.uid}">${x.status==='blocked'?'Unblock':'Block'}</button>`}</td></tr>`).join('');document.querySelectorAll('[data-block]').forEach(b=>b.onclick=()=>block(b.dataset.block))});let ro=onValue(ref(db,'helpRequests'),s=>{let a=Object.values(s.val()||{});$('ar').textContent=a.length;$('ad').textContent=a.filter(x=>x.status==='completed').length;$('rtab').innerHTML=a.map(r=>`<div class="request"><div class="rhead"><h4>${esc(r.title)}</h4><span class="status ${r.status}">${esc(r.status)}</span></div><div class="meta">${esc(r.requesterName)} • ${esc(r.location)}</div><div class="desc">${esc(r.description)}</div><button class="btn danger" data-delete="${r.requestId}">Delete</button></div>`).join('')||'<div class="empty">No requests.</div>';document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>del(b.dataset.delete))});offs.push(uo,ro)}
-async function block(uid){let s=await get(ref(db,'users/'+uid)),x=s.val();await update(ref(db,'users/'+uid),{status:x.status==='blocked'?'active':'blocked'})}async function del(id){if(confirm('Delete this request?'))await remove(ref(db,'helpRequests/'+id))}
+<body>
+
+<div id="app"></div>
+
+
+<script type="module">
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    push,
+    update,
+    remove,
+    onValue
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyAGSX7VLwTK3hdnm2dEURCMG8YchDE8XTE",
+
+    authDomain:
+    "travel-81ab4.firebaseapp.com",
+
+    databaseURL:
+    "https://travel-81ab4-default-rtdb.firebaseio.com",
+
+    projectId:
+    "travel-81ab4",
+
+    storageBucket:
+    "travel-81ab4.firebasestorage.app",
+
+    messagingSenderId:
+    "978469309246",
+
+    appId:
+    "1:978469309246:web:2cee2175426d4a91063a6f",
+
+    measurementId:
+    "G-T0GBMSE60Z"
+};
+
+
+const firebaseApp =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(firebaseApp);
+
+const db =
+    getDatabase(firebaseApp);
+
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let currentUser = null;
+let profile = null;
+let listeners = [];
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+const $ = id =>
+    document.getElementById(id);
+
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/[&<>"']/g, character => ({
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+        }[character]));
+
+}
+
+
+function dateFormat(value){
+
+    if(!value) return "—";
+
+    return new Date(value)
+        .toLocaleString();
+
+}
+
+
+function clearListeners(){
+
+    listeners.forEach(
+        unsubscribe => {
+
+            if(typeof unsubscribe === "function"){
+                unsubscribe();
+            }
+
+        }
+    );
+
+    listeners = [];
+
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+function navbar(){
+
+    return `
+
+    <nav class="nav">
+
+        <div class="logo">
+            Help<span>Hub</span> 🤝
+        </div>
+
+        <div class="nav-right">
+
+            ${
+                profile
+                ?
+                `
+
+                <span class="badge">
+
+                    ${
+                        profile.role === "admin"
+                        ? "👑 Admin"
+                        :
+                        profile.mode === "volunteer"
+                        ? "🙋 Volunteer"
+                        : "🆘 Help"
+                    }
+
+                    ${escapeHTML(profile.name)}
+
+                </span>
+
+                <button
+                    class="btn dark"
+                    id="accountBtn">
+
+                    Account
+
+                </button>
+
+                <button
+                    class="btn danger"
+                    id="logoutBtn">
+
+                    Logout
+
+                </button>
+
+                `
+                :
+                ""
+            }
+
+        </div>
+
+    </nav>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+function landing(){
+
+    clearListeners();
+
+    $("app").innerHTML =
+
+        navbar() +
+
+        `
+
+        <main class="container">
+
+            <section class="hero">
+
+                <span class="badge">
+                    COMMUNITY • HELP • VOLUNTEER
+                </span>
+
+                <h1>
+                    HelpHub
+                </h1>
+
+                <p>
+
+                    Connect people who need help
+                    with people who are ready to help.
+
+                    Create requests, volunteer,
+                    chat in real time and track tasks.
+
+                </p>
+
+
+                <div class="auth-box">
+
+                    <div class="tabs">
+
+                        <button
+                            class="tab active"
+                            id="loginTab">
+
+                            Login
+
+                        </button>
+
+                        <button
+                            class="tab"
+                            id="registerTab">
+
+                            Register
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="authForm"></div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        `;
+
+
+    showLoginForm();
+
+
+    $("loginTab").onclick =
+        showLoginForm;
+
+    $("registerTab").onclick =
+        showRegisterForm;
+
+}
+
+
+/* =====================================================
+   LOGIN FORM
+===================================================== */
+
+function showLoginForm(){
+
+    $("loginTab").classList.add("active");
+    $("registerTab").classList.remove("active");
+
+
+    $("authForm").innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter email">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Enter password">
+
+        </div>
+
+
+        <button
+            class="btn primary full"
+            id="loginBtn">
+
+            👤 User Login
+
+        </button>
+
+
+        <button
+            class="btn dark full"
+            id="adminLoginBtn"
+            style="margin-top:10px;">
+
+            👑 Admin Login
+
+        </button>
+
+    `;
+
+
+    $("loginBtn").onclick =
+        loginUser;
+
+    $("adminLoginBtn").onclick =
+        loginAdmin;
+
+}
+
+
+/* =====================================================
+   REGISTER FORM
+===================================================== */
+
+function showRegisterForm(){
+
+    $("registerTab").classList.add("active");
+    $("loginTab").classList.remove("active");
+
+
+    $("authForm").innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="name"
+                placeholder="Your name">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone
+            </label>
+
+            <input
+                id="phone"
+                placeholder="Mobile number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Email">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Minimum 6 characters">
+
+        </div>
+
+
+        <button
+            class="btn primary full"
+            id="registerBtn">
+
+            Create Account
+
+        </button>
+
+    `;
+
+
+    $("registerBtn").onclick =
+        registerUser;
+
+}
+
+
+/* =====================================================
+   USER LOGIN
+===================================================== */
+
+async function loginUser(){
+
+    try{
+
+        const email =
+            $("email").value.trim();
+
+        const password =
+            $("password").value;
+
+
+        if(!email || !password){
+
+            alert(
+                "Enter email and password."
+            );
+
+            return;
+        }
+
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+async function loginAdmin(){
+
+    try{
+
+        const email =
+            $("email").value.trim();
+
+        const password =
+            $("password").value;
+
+
+        if(!email || !password){
+
+            alert(
+                "Enter admin email and password."
+            );
+
+            return;
+        }
+
+
+        const result =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        const snapshot =
+            await get(
+                ref(
+                    db,
+                    "users/" +
+                    result.user.uid
+                )
+            );
+
+
+        if(!snapshot.exists()){
+
+            alert(
+                "Admin profile not found."
+            );
+
+            await signOut(auth);
+
+            return;
+        }
+
+
+        const data =
+            snapshot.val();
+
+
+        if(data.role !== "admin"){
+
+            alert(
+                "This account is not an Admin account."
+            );
+
+            await signOut(auth);
+
+            return;
+        }
+
+
+        if(data.status === "blocked"){
+
+            alert(
+                "Admin account is blocked."
+            );
+
+            await signOut(auth);
+
+            return;
+        }
+
+
+        profile = data;
+
+
+        adminDashboard();
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+async function registerUser(){
+
+    try{
+
+        const name =
+            $("name").value.trim();
+
+        const phone =
+            $("phone").value.trim();
+
+        const email =
+            $("email").value.trim();
+
+        const password =
+            $("password").value;
+
+
+        if(!name){
+
+            alert(
+                "Enter your name."
+            );
+
+            return;
+        }
+
+
+        if(password.length < 6){
+
+            alert(
+                "Password must have at least 6 characters."
+            );
+
+            return;
+        }
+
+
+        const result =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        await set(
+            ref(
+                db,
+                "users/" +
+                result.user.uid
+            ),
+            {
+
+                uid:
+                    result.user.uid,
+
+                name:
+                    name,
+
+                phone:
+                    phone,
+
+                email:
+                    email,
+
+                role:
+                    "member",
+
+                mode:
+                    "help",
+
+                status:
+                    "active",
+
+                createdAt:
+                    Date.now()
+
+            }
+        );
+
+
+        alert(
+            "Account created successfully!"
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        currentUser = user;
+
+
+        if(!user){
+
+            profile = null;
+
+            landing();
+
+            return;
+        }
+
+
+        try{
+
+            const snapshot =
+                await get(
+                    ref(
+                        db,
+                        "users/" +
+                        user.uid
+                    )
+                );
+
+
+            if(!snapshot.exists()){
+
+                await set(
+                    ref(
+                        db,
+                        "users/" +
+                        user.uid
+                    ),
+                    {
+
+                        uid:
+                            user.uid,
+
+                        name:
+                            user.email
+                            .split("@")[0],
+
+                        email:
+                            user.email,
+
+                        role:
+                            "member",
+
+                        mode:
+                            "help",
+
+                        status:
+                            "active",
+
+                        createdAt:
+                            Date.now()
+
+                    }
+                );
+
+            }
+
+
+            const updatedSnapshot =
+                await get(
+                    ref(
+                        db,
+                        "users/" +
+                        user.uid
+                    )
+                );
+
+
+            profile =
+                updatedSnapshot.val();
+
+
+            if(profile.status === "blocked"){
+
+                alert(
+                    "Your account has been blocked by Admin."
+                );
+
+                await signOut(auth);
+
+                return;
+            }
+
+
+            showDashboard();
+
+        }
+        catch(error){
+
+            alert(error.message);
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DASHBOARD ROUTER
+===================================================== */
+
+function showDashboard(){
+
+    if(profile.role === "admin"){
+
+        adminDashboard();
+
+    }
+    else if(profile.mode === "volunteer"){
+
+        volunteerDashboard();
+
+    }
+    else{
+
+        helpDashboard();
+
+    }
+
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+function accountPage(){
+
+    clearListeners();
+
+
+    $("app").innerHTML =
+
+        navbar() +
+
+        `
+
+        <main class="container">
+
+            <div class="heading">
+
+                <div>
+
+                    <span class="badge">
+                        ACCOUNT
+                    </span>
+
+                    <h2>
+                        Choose Your Mode
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="btn dark"
+                    id="backBtn">
+
+                    ← Dashboard
+
+                </button>
+
+            </div>
+
+
+            <div class="mode-grid">
+
+
+                <div class="mode-card">
+
+                    <div class="mode-icon">
+                        🆘
+                    </div>
+
+                    <h2>
+                        I Want Help
+                    </h2>
+
+                    <p>
+
+                        Create a help request
+                        and receive assistance
+                        from volunteers.
+
+                    </p>
+
+                    <button
+                        class="btn primary full"
+                        id="helpMode">
+
+                        Use Help Mode
+
+                    </button>
+
+                </div>
+
+
+                <div class="mode-card">
+
+                    <div class="mode-icon">
+                        🙋
+                    </div>
+
+                    <h2>
+                        I Want to Help
+                    </h2>
+
+                    <p>
+
+                        Find people who need
+                        help and volunteer
+                        for their requests.
+
+                    </p>
+
+                    <button
+                        class="btn primary full"
+                        id="volunteerMode">
+
+                        Use Volunteer Mode
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+        `;
+
+
+    $("backBtn").onclick =
+        showDashboard;
+
+
+    $("helpMode").onclick =
+        () => changeMode("help");
+
+
+    $("volunteerMode").onclick =
+        () => changeMode("volunteer");
+
+}
+
+
+/* =====================================================
+   CHANGE MODE
+===================================================== */
+
+async function changeMode(mode){
+
+    try{
+
+        await update(
+            ref(
+                db,
+                "users/" +
+                currentUser.uid
+            ),
+            {
+                mode:mode
+            }
+        );
+
+
+        profile.mode = mode;
+
+        showDashboard();
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   HELP DASHBOARD
+===================================================== */
+
+function helpDashboard(){
+
+    clearListeners();
+
+
+    $("app").innerHTML =
+
+        navbar() +
+
+        `
+
+        <main class="container">
+
+            <div class="heading">
+
+                <div>
+
+                    <span class="badge">
+                        HELP MODE
+                    </span>
+
+                    <h2>
+                        Need Help?
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <small>
+                        My Requests
+                    </small>
+
+                    <strong id="requestCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Assigned
+                    </small>
+
+                    <strong id="assignedCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Completed
+                    </small>
+
+                    <strong id="completedCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Current Mode
+                    </small>
+
+                    <strong style="font-size:18px">
+                        HELP
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <section class="card">
+
+                    <h3>
+                        📝 Create Help Request
+                    </h3>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Title
+                        </label>
+
+                        <input
+                            id="requestTitle"
+                            placeholder="What help do you need?">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Category
+                        </label>
+
+                        <select id="requestCategory">
+
+                            <option>
+                                General
+                            </option>
+
+                            <option>
+                                Education
+                            </option>
+
+                            <option>
+                                Food
+                            </option>
+
+                            <option>
+                                Transport
+                            </option>
+
+                            <option>
+                                Technology
+                            </option>
+
+                            <option>
+                                Senior Citizen
+                            </option>
+
+                            <option>
+                                Medical Support
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            id="requestDescription"
+                            placeholder="Explain the help you need">
+                        </textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <input
+                            id="requestLocation"
+                            placeholder="Area / City">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Urgency
+                        </label>
+
+                        <select id="requestUrgency">
+
+                            <option>
+                                Normal
+                            </option>
+
+                            <option>
+                                High
+                            </option>
+
+                            <option>
+                                Urgent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="btn primary full"
+                        id="createRequest">
+
+                        Post Help Request
+
+                    </button>
+
+                </section>
+
+
+                <section class="card">
+
+                    <h3>
+                        📋 My Requests
+                    </h3>
+
+                    <div id="myRequests">
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <section class="card">
+
+                <h3>
+                    🤝 Volunteer Offers
+                </h3>
+
+                <div id="offers">
+                </div>
+
+            </section>
+
+
+            <section
+                class="card hidden"
+                id="chatSection">
+
+                <h3>
+                    💬 Chat
+                </h3>
+
+                <div id="chatContainer">
+                </div>
+
+            </section>
+
+        </main>
+
+        `;
+
+
+    $("createRequest").onclick =
+        createHelpRequest;
+
+
+    listenHelpRequests();
+
+}
+
+
+/* =====================================================
+   CREATE REQUEST
+===================================================== */
+
+async function createHelpRequest(){
+
+    try{
+
+        const title =
+            $("requestTitle")
+            .value
+            .trim();
+
+        const description =
+            $("requestDescription")
+            .value
+            .trim();
+
+        const location =
+            $("requestLocation")
+            .value
+            .trim();
+
+
+        if(!title ||
+           !description ||
+           !location){
+
+            alert(
+                "Please fill all required fields."
+            );
+
+            return;
+        }
+
+
+        const id =
+            push(
+                ref(db,"helpRequests")
+            ).key;
+
+
+        await set(
+            ref(
+                db,
+                "helpRequests/" +
+                id
+            ),
+            {
+
+                requestId:
+                    id,
+
+                title:
+                    title,
+
+                description:
+                    description,
+
+                category:
+                    $("requestCategory").value,
+
+                location:
+                    location,
+
+                urgency:
+                    $("requestUrgency").value,
+
+                createdBy:
+                    currentUser.uid,
+
+                requesterName:
+                    profile.name,
+
+                status:
+                    "open",
+
+                volunteerId:
+                    "",
+
+                volunteerName:
+                    "",
+
+                createdAt:
+                    Date.now()
+
+            }
+        );
+
+
+        $("requestTitle").value="";
+        $("requestDescription").value="";
+        $("requestLocation").value="";
+
+
+        alert(
+            "Help request created!"
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   HELP REQUEST LISTENER
+===================================================== */
+
+function listenHelpRequests(){
+
+    const unsubscribe =
+        onValue(
+            ref(db,"helpRequests"),
+            snapshot => {
+
+                const data =
+                    snapshot.val() || {};
+
+
+                const requests =
+                    Object.values(data)
+                    .filter(
+                        r =>
+                        r.createdBy ===
+                        currentUser.uid
+                    )
+                    .sort(
+                        (a,b)=>
+                        (b.createdAt||0) -
+                        (a.createdAt||0)
+                    );
+
+
+                $("requestCount")
+                    .textContent =
+                    requests.length;
+
+
+                $("assignedCount")
+                    .textContent =
+                    requests.filter(
+                        r =>
+                        r.status === "assigned"
+                    ).length;
+
+
+                $("completedCount")
+                    .textContent =
+                    requests.filter(
+                        r =>
+                        r.status === "completed"
+                    ).length;
+
+
+                $("myRequests").innerHTML =
+                    requests.length
+                    ?
+
+                    requests
+                    .map(
+                        createRequestHTML
+                    )
+                    .join("")
+
+                    :
+
+                    `
+                    <div class="empty">
+                        No requests yet.
+                    </div>
+                    `;
+
+
+                requests.forEach(
+                    r =>
+                    loadOffers(
+                        r.requestId
+                    )
+                );
+
+
+                bindButtons();
+
+            }
+        );
+
+
+    listeners.push(
+        unsubscribe
+    );
+
+}
+
+
+/* =====================================================
+   REQUEST HTML
+===================================================== */
+
+function createRequestHTML(r){
+
+    return `
+
+    <div class="request">
+
+        <div class="request-top">
+
+            <div>
+
+                <h4>
+                    ${escapeHTML(r.title)}
+                </h4>
+
+                <div class="meta">
+
+                    ${escapeHTML(r.category)}
+                    •
+                    ${escapeHTML(r.location)}
+                    •
+                    ${escapeHTML(r.urgency)}
+
+                    <br>
+
+                    ${dateFormat(r.createdAt)}
+
+                </div>
+
+            </div>
+
+
+            <span class="status ${escapeHTML(r.status)}">
+
+                ${escapeHTML(
+                    r.status.toUpperCase()
+                )}
+
+            </span>
+
+        </div>
+
+
+        <div class="description">
+
+            ${escapeHTML(r.description)}
+
+        </div>
+
+
+        ${
+            r.volunteerName
+            ?
+
+            `
+            <div class="meta">
+
+                Volunteer:
+                <b>
+                    ${escapeHTML(
+                        r.volunteerName
+                    )}
+                </b>
+
+            </div>
+            `
+
+            :
+
+            ""
+        }
+
+
+        <div class="actions">
+
+            ${
+                r.status === "assigned"
+
+                ?
+
+                `
+
+                <button
+                    class="btn primary"
+                    data-chat="${r.requestId}">
+
+                    💬 Chat
+
+                </button>
+
+
+                <button
+                    class="btn success"
+                    data-complete="${r.requestId}">
+
+                    ✅ Completed
+
+                </button>
+
+                `
+
+                :
+
+                ""
+            }
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOAD OFFERS
+===================================================== */
+
+async function loadOffers(requestId){
+
+    try{
+
+        const requestSnapshot =
+            await get(
+                ref(
+                    db,
+                    "helpRequests/" +
+                    requestId
+                )
+            );
+
+
+        const request =
+            requestSnapshot.val();
+
+
+        if(
+            !request ||
+            request.createdBy !==
+            currentUser.uid
+        ){
+
+            return;
+        }
+
+
+        const snapshot =
+            await get(
+                ref(
+                    db,
+                    "offers/" +
+                    requestId
+                )
+            );
+
+
+        const offers =
+            snapshot.val() || {};
+
+
+        const list =
+            Object.entries(offers);
+
+
+        if(!$("offers")) return;
+
+
+        $("offers").innerHTML =
+            list.length
+
+            ?
+
+            list
+            .map(
+                ([id,o]) => `
+
+                <div class="request">
+
+                    <div class="request-top">
+
+                        <h4>
+
+                            🙋
+                            ${escapeHTML(
+                                o.volunteerName
+                            )}
+
+                        </h4>
+
+
+                        <span class="status open">
+
+                            ${escapeHTML(
+                                o.status ||
+                                "pending"
+                            )}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="description">
+
+                        ${escapeHTML(
+                            o.message ||
+                            "I can help."
+                        )}
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        ${
+                            !request.volunteerId &&
+                            o.status !== "rejected"
+
+                            ?
+
+                            `
+                            <button
+                                class="btn success"
+                                data-accept="${requestId}|${id}">
+
+                                Accept Volunteer
+
+                            </button>
+                            `
+
+                            :
+
+                            ""
+                        }
+
+
+                        ${
+                            request.volunteerId === id
+
+                            ?
+
+                            `
+                            <button
+                                class="btn primary"
+                                data-chat="${requestId}">
+
+                                💬 Chat
+
+                            </button>
+                            `
+
+                            :
+
+                            ""
+                        }
+
+                    </div>
+
+                </div>
+
+                `
+            )
+            .join("")
+
+            :
+
+            `
+            <div class="empty">
+                No volunteer offers yet.
+            </div>
+            `;
+
+
+        bindButtons();
+
+    }
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+/* =====================================================
+   ACCEPT VOLUNTEER
+===================================================== */
+
+async function acceptVolunteer(
+    requestId,
+    volunteerId
+){
+
+    try{
+
+        const snapshot =
+            await get(
+                ref(
+                    db,
+                    "offers/" +
+                    requestId +
+                    "/" +
+                    volunteerId
+                )
+            );
+
+
+        const offer =
+            snapshot.val();
+
+
+        if(!offer) return;
+
+
+        await update(
+            ref(
+                db,
+                "helpRequests/" +
+                requestId
+            ),
+            {
+
+                status:
+                    "assigned",
+
+                volunteerId:
+                    volunteerId,
+
+                volunteerName:
+                    offer.volunteerName
+
+            }
+        );
+
+
+        await update(
+            ref(
+                db,
+                "offers/" +
+                requestId +
+                "/" +
+                volunteerId
+            ),
+            {
+                status:
+                    "accepted"
+            }
+        );
+
+
+        const allOffers =
+            (
+                await get(
+                    ref(
+                        db,
+                        "offers/" +
+                        requestId
+                    )
+                )
+            ).val() || {};
+
+
+        for(
+            const id of
+            Object.keys(allOffers)
+        ){
+
+            if(id !== volunteerId){
+
+                await update(
+                    ref(
+                        db,
+                        "offers/" +
+                        requestId +
+                        "/" +
+                        id
+                    ),
+                    {
+                        status:
+                            "rejected"
+                    }
+                );
+
+            }
+
+        }
+
+
+        alert(
+            "Volunteer accepted!"
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   COMPLETE REQUEST
+===================================================== */
+
+async function completeRequest(id){
+
+    try{
+
+        await update(
+            ref(
+                db,
+                "helpRequests/" +
+                id
+            ),
+            {
+
+                status:
+                    "completed",
+
+                completedAt:
+                    Date.now()
+
+            }
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   VOLUNTEER DASHBOARD
+===================================================== */
+
+function volunteerDashboard(){
+
+    clearListeners();
+
+
+    $("app").innerHTML =
+
+        navbar() +
+
+        `
+
+        <main class="container">
+
+            <div class="heading">
+
+                <div>
+
+                    <span class="badge">
+                        VOLUNTEER MODE
+                    </span>
+
+                    <h2>
+                        Find People to Help
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <section class="card">
+
+                <div class="form-group">
+
+                    <label>
+                        Search Requests
+                    </label>
+
+                    <input
+                        id="search"
+                        placeholder="Search by title, category or location">
+
+                </div>
+
+            </section>
+
+
+            <div class="grid">
+
+
+                <section class="card">
+
+                    <h3>
+                        🌍 Open Requests
+                    </h3>
+
+                    <div id="openRequests">
+                    </div>
+
+                </section>
+
+
+                <section class="card">
+
+                    <h3>
+                        📌 My Tasks
+                    </h3>
+
+                    <div id="myTasks">
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <section
+                class="card hidden"
+                id="volunteerChat">
+
+                <h3>
+                    💬 Real-time Chat
+                </h3>
+
+                <div id="volunteerChatContainer">
+                </div>
+
+            </section>
+
+        </main>
+
+        `;
+
+
+    $("search").oninput =
+        () =>
+        renderVolunteer(
+            window.allRequests || {}
+        );
+
+
+    const unsubscribe =
+        onValue(
+            ref(db,"helpRequests"),
+            snapshot => {
+
+                window.allRequests =
+                    snapshot.val() || {};
+
+                renderVolunteer(
+                    window.allRequests
+                );
+
+            }
+        );
+
+
+    listeners.push(
+        unsubscribe
+    );
+
+}
+
+
+/* =====================================================
+   VOLUNTEER REQUESTS
+===================================================== */
+
+function renderVolunteer(data){
+
+    const search =
+        (
+            $("search")?.value ||
+            ""
+        ).toLowerCase();
+
+
+    const requests =
+        Object.values(data);
+
+
+    const open =
+        requests.filter(
+            r =>
+
+            r.status === "open" &&
+
+            r.createdBy !==
+            currentUser.uid &&
+
+            (
+                r.title +
+                " " +
+                r.category +
+                " " +
+                r.location
+            )
+            .toLowerCase()
+            .includes(search)
+        );
+
+
+    const mine =
+        requests.filter(
+            r =>
+            r.volunteerId ===
+            currentUser.uid
+        );
+
+
+    $("openRequests").innerHTML =
+        open.length
+
+        ?
+
+        open.map(
+            r => `
+
+            <div class="request">
+
+                <div class="request-top">
+
+                    <div>
+
+                        <h4>
+                            ${escapeHTML(r.title)}
+                        </h4>
+
+                        <div class="meta">
+
+                            ${escapeHTML(r.category)}
+                            •
+                            ${escapeHTML(r.location)}
+                            •
+                            ${escapeHTML(r.urgency)}
+
+                        </div>
+
+                    </div>
+
+                    <span class="status open">
+                        OPEN
+                    </span>
+
+                </div>
+
+
+                <div class="description">
+
+                    ${escapeHTML(
+                        r.description
+                    )}
+
+                </div>
+
+
+                <div class="meta">
+
+                    Requested by:
+                    ${escapeHTML(
+                        r.requesterName
+                    )}
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="btn primary"
+                        data-offer="${r.requestId}">
+
+                        🙋 Offer Help
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `
+        ).join("")
+
+        :
+
+        `
+        <div class="empty">
+            No open requests.
+        </div>
+        `;
+
+
+    $("myTasks").innerHTML =
+        mine.length
+
+        ?
+
+        mine.map(
+            r => `
+
+            <div class="request">
+
+                <div class="request-top">
+
+                    <h4>
+                        ${escapeHTML(r.title)}
+                    </h4>
+
+                    <span class="status ${
+                        escapeHTML(r.status)
+                    }">
+
+                        ${escapeHTML(r.status)}
+
+                    </span>
+
+                </div>
+
+
+                <div class="meta">
+
+                    Requester:
+                    ${escapeHTML(
+                        r.requesterName
+                    )}
+
+                    •
+
+                    ${escapeHTML(
+                        r.location
+                    )}
+
+                </div>
+
+
+                <div class="actions">
+
+                    ${
+                        r.status === "assigned"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="btn primary"
+                            data-volchat="${r.requestId}">
+
+                            💬 Chat
+
+                        </button>
+
+
+                        <button
+                            class="btn success"
+                            data-complete="${r.requestId}">
+
+                            ✅ Completed
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+            `
+        ).join("")
+
+        :
+
+        `
+        <div class="empty">
+            No assigned tasks.
+        </div>
+        `;
+
+
+    bindButtons();
+
+}
+
+
+/* =====================================================
+   OFFER HELP
+===================================================== */
+
+async function offerHelp(requestId){
+
+    const message =
+        prompt(
+            "Write a message to requester:"
+        );
+
+
+    if(message === null) return;
+
+
+    try{
+
+        await set(
+            ref(
+                db,
+                "offers/" +
+                requestId +
+                "/" +
+                currentUser.uid
+            ),
+            {
+
+                volunteerId:
+                    currentUser.uid,
+
+                volunteerName:
+                    profile.name,
+
+                message:
+                    message ||
+                    "I can help with this request.",
+
+                status:
+                    "pending",
+
+                createdAt:
+                    Date.now()
+
+            }
+        );
+
+
+        alert(
+            "Offer sent successfully!"
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+function openChat(
+    requestId,
+    volunteer = false
+){
+
+    const section =
+        volunteer
+        ?
+        $("volunteerChat")
+        :
+        $("chatSection");
+
+
+    const container =
+        volunteer
+        ?
+        $("volunteerChatContainer")
+        :
+        $("chatContainer");
+
+
+    if(!section || !container)
+        return;
+
+
+    section.classList.remove(
+        "hidden"
+    );
+
+
+    container.innerHTML = `
+
+        <div class="chat-box">
+
+            <div
+                class="messages"
+                id="messages">
+
+            </div>
+
+
+            <div class="send-box">
+
+                <input
+                    id="messageInput"
+                    placeholder="Type message...">
+
+                <button
+                    class="btn primary"
+                    id="sendBtn">
+
+                    Send
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    $("sendBtn").onclick =
+        () =>
+        sendMessage(requestId);
+
+
+    $("messageInput").onkeydown =
+        event => {
+
+            if(event.key === "Enter"){
+
+                sendMessage(
+                    requestId
+                );
+
+            }
+
+        };
+
+
+    const unsubscribe =
+        onValue(
+            ref(
+                db,
+                "chats/" +
+                requestId
+            ),
+            snapshot => {
+
+                const messages =
+                    Object.values(
+                        snapshot.val() || {}
+                    )
+                    .sort(
+                        (a,b) =>
+                        (a.timestamp || 0) -
+                        (b.timestamp || 0)
+                    );
+
+
+                $("messages").innerHTML =
+                    messages.length
+
+                    ?
+
+                    messages.map(
+                        m => `
+
+                        <div class="message ${
+                            m.senderId ===
+                            currentUser.uid
+                            ?
+                            "mine"
+                            :
+                            ""
+                        }">
+
+                            <b>
+                                ${escapeHTML(
+                                    m.senderName
+                                )}
+                            </b>
+
+                            <div>
+                                ${escapeHTML(
+                                    m.message
+                                )}
+                            </div>
+
+                            <small>
+                                ${dateFormat(
+                                    m.timestamp
+                                )}
+                            </small>
+
+                        </div>
+
+                        `
+                    ).join("")
+
+                    :
+
+                    `
+                    <div class="empty">
+                        Start chatting.
+                    </div>
+                    `;
+
+
+                $("messages").scrollTop =
+                    $("messages").scrollHeight;
+
+            }
+        );
+
+
+    listeners.push(
+        unsubscribe
+    );
+
+}
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
+async function sendMessage(requestId){
+
+    const input =
+        $("messageInput");
+
+
+    const message =
+        input.value.trim();
+
+
+    if(!message)
+        return;
+
+
+    try{
+
+        const id =
+            push(
+                ref(
+                    db,
+                    "chats/" +
+                    requestId
+                )
+            ).key;
+
+
+        await set(
+            ref(
+                db,
+                "chats/" +
+                requestId +
+                "/" +
+                id
+            ),
+            {
+
+                senderId:
+                    currentUser.uid,
+
+                senderName:
+                    profile.name,
+
+                message:
+                    message,
+
+                timestamp:
+                    Date.now()
+
+            }
+        );
+
+
+        input.value = "";
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN DASHBOARD
+===================================================== */
+
+function adminDashboard(){
+
+    clearListeners();
+
+
+    $("app").innerHTML =
+
+        navbar() +
+
+        `
+
+        <main class="container">
+
+
+            <div class="heading">
+
+                <div>
+
+                    <span class="badge">
+                        👑 ADMIN PANEL
+                    </span>
+
+                    <h2>
+                        HelpHub Administration
+                    </h2>
+
+                    <div class="meta">
+
+                        Manage users,
+                        volunteers and
+                        help requests.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <small>
+                        Total Users
+                    </small>
+
+                    <strong id="totalUsers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Volunteers
+                    </small>
+
+                    <strong id="totalVolunteers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Requests
+                    </small>
+
+                    <strong id="totalRequests">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Completed
+                    </small>
+
+                    <strong id="totalCompleted">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- USERS -->
+
+            <section class="card">
+
+                <h3>
+                    👥 Registered Users
+                </h3>
+
+                <p class="meta">
+
+                    Admin can view complete
+                    user information and activity.
+
+                </p>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Phone
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Mode
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Check
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="usersTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- REQUESTS -->
+
+            <section class="card">
+
+                <h3>
+                    🆘 All Help Requests
+                </h3>
+
+                <div id="adminRequests">
+                </div>
+
+            </section>
+
+
+            <div id="modalArea">
+            </div>
+
+        </main>
+
+        `;
+
+
+    /* USERS */
+
+    const userListener =
+        onValue(
+            ref(db,"users"),
+            snapshot => {
+
+                const users =
+                    Object.values(
+                        snapshot.val() || {}
+                    );
+
+
+                $("totalUsers")
+                    .textContent =
+                    users.length;
+
+
+                $("totalVolunteers")
+                    .textContent =
+                    users.filter(
+                        u =>
+                        u.mode ===
+                        "volunteer"
+                    ).length;
+
+
+                $("usersTable").innerHTML =
+                    users.map(
+                        u => `
+
+                        <tr>
+
+                            <td>
+                                ${escapeHTML(u.name)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(u.email)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(
+                                    u.phone ||
+                                    "—"
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(
+                                    u.role
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(
+                                    u.mode ||
+                                    "help"
+                                )}
+                            </td>
+
+                            <td>
+
+                                <span class="status ${
+                                    u.status ===
+                                    "blocked"
+                                    ?
+                                    "blocked"
+                                    :
+                                    "active"
+                                }">
+
+                                    ${escapeHTML(
+                                        u.status ||
+                                        "active"
+                                    )}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn dark"
+                                    data-viewuser="${u.uid}">
+
+                                    👁 View
+
+                                </button>
+
+                            </td>
+
+                            <td>
+
+                                ${
+                                    u.uid ===
+                                    currentUser.uid
+
+                                    ?
+
+                                    "—"
+
+                                    :
+
+                                    `
+
+                                    <button
+                                        class="btn ${
+                                            u.status ===
+                                            "blocked"
+                                            ?
+                                            "success"
+                                            :
+                                            "danger"
+                                        }"
+                                        data-blockuser="${u.uid}">
+
+                                        ${
+                                            u.status ===
+                                            "blocked"
+                                            ?
+                                            "Unblock"
+                                            :
+                                            "Block"
+                                        }
+
+                                    </button>
+
+                                    `
+                                }
+
+                            </td>
+
+                        </tr>
+
+                        `
+                    ).join("");
+
+
+                bindButtons();
+
+            }
+        );
+
+
+    /* REQUESTS */
+
+    const requestListener =
+        onValue(
+            ref(db,"helpRequests"),
+            snapshot => {
+
+                const requests =
+                    Object.values(
+                        snapshot.val() || {}
+                    );
+
+
+                $("totalRequests")
+                    .textContent =
+                    requests.length;
+
+
+                $("totalCompleted")
+                    .textContent =
+                    requests.filter(
+                        r =>
+                        r.status ===
+                        "completed"
+                    ).length;
+
+
+                $("adminRequests").innerHTML =
+                    requests.length
+
+                    ?
+
+                    requests.map(
+                        r => `
+
+                        <div class="request">
+
+                            <div class="request-top">
+
+                                <div>
+
+                                    <h4>
+                                        ${escapeHTML(
+                                            r.title
+                                        )}
+                                    </h4>
+
+                                    <div class="meta">
+
+                                        Requester:
+                                        ${escapeHTML(
+                                            r.requesterName
+                                        )}
+
+                                        •
+
+                                        ${escapeHTML(
+                                            r.location
+                                        )}
+
+                                        •
+
+                                        ${dateFormat(
+                                            r.createdAt
+                                        )}
+
+                                    </div>
+
+                                </div>
+
+
+                                <span class="status ${
+                                    escapeHTML(
+                                        r.status
+                                    )
+                                }">
+
+                                    ${escapeHTML(
+                                        r.status
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="description">
+
+                                ${escapeHTML(
+                                    r.description
+                                )}
+
+                            </div>
+
+
+                            <div class="meta">
+
+                                Category:
+                                ${escapeHTML(
+                                    r.category
+                                )}
+
+                                <br>
+
+                                Urgency:
+                                ${escapeHTML(
+                                    r.urgency
+                                )}
+
+                                ${
+                                    r.volunteerName
+                                    ?
+
+                                    `
+                                    <br>
+                                    Volunteer:
+                                    ${escapeHTML(
+                                        r.volunteerName
+                                    )}
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+                            </div>
+
+
+                            <div class="actions">
+
+                                <button
+                                    class="btn danger"
+                                    data-deleterequest="${r.requestId}">
+
+                                    🗑 Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        `
+                    ).join("")
+
+                    :
+
+                    `
+                    <div class="empty">
+                        No requests.
+                    </div>
+                    `;
+
+
+                bindButtons();
+
+            }
+        );
+
+
+    listeners.push(
+        userListener,
+        requestListener
+    );
+
+}
+
+
+/* =====================================================
+   ADMIN VIEW USER
+===================================================== */
+
+async function viewUser(uid){
+
+    try{
+
+        const userSnapshot =
+            await get(
+                ref(
+                    db,
+                    "users/" +
+                    uid
+                )
+            );
+
+
+        if(!userSnapshot.exists()){
+
+            alert(
+                "User not found."
+            );
+
+            return;
+        }
+
+
+        const user =
+            userSnapshot.val();
+
+
+        const requestSnapshot =
+            await get(
+                ref(
+                    db,
+                    "helpRequests"
+                )
+            );
+
+
+        const requests =
+            Object.values(
+                requestSnapshot.val() || {}
+            );
+
+
+        /* REQUESTS CREATED */
+
+        const created =
+            requests.filter(
+                r =>
+                r.createdBy === uid
+            );
+
+
+        /* VOLUNTEER TASKS */
+
+        const tasks =
+            requests.filter(
+                r =>
+                r.volunteerId === uid
+            );
+
+
+        /* OFFERS */
+
+        const offersSnapshot =
+            await get(
+                ref(
+                    db,
+                    "offers"
+                )
+            );
+
+
+        const offerRoot =
+            offersSnapshot.val() || {};
+
+
+        let totalOffers = 0;
+        let acceptedOffers = 0;
+
+
+        Object.values(
+            offerRoot
+        ).forEach(
+            group => {
+
+                Object.values(
+                    group || {}
+                ).forEach(
+                    offer => {
+
+                        if(
+                            offer.volunteerId === uid
+                        ){
+
+                            totalOffers++;
+
+                            if(
+                                offer.status ===
+                                "accepted"
+                            ){
+
+                                acceptedOffers++;
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        $("modalArea").innerHTML = `
+
+        <div class="modal">
+
+            <div class="modal-box">
+
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <span class="badge">
+                            USER INFORMATION
+                        </span>
+
+                        <h2>
+                            ${escapeHTML(
+                                user.name
+                            )}
+                        </h2>
+
+                        <div class="meta">
+
+                            UID:
+                            ${escapeHTML(
+                                user.uid
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="btn dark"
+                        id="closeModal">
+
+                        ✕ Close
+
+                    </button>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="info-grid">
+
+
+                    <div class="info">
+
+                        Role
+
+                        <b>
+                            ${escapeHTML(
+                                user.role
+                            )}
+                        </b>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        Mode
+
+                        <b>
+                            ${escapeHTML(
+                                user.mode ||
+                                "help"
+                            )}
+                        </b>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        Status
+
+                        <b>
+                            ${escapeHTML(
+                                user.status ||
+                                "active"
+                            )}
+                        </b>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        Requests
+
+                        <b>
+                            ${created.length}
+                        </b>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        Volunteer Tasks
+
+                        <b>
+                            ${tasks.length}
+                        </b>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        Offers
+
+                        <b>
+                            ${totalOffers}
+                        </b>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="card">
+
+                    <h3>
+                        👤 Account Details
+                    </h3>
+
+                    <div class="meta">
+
+                        <b>Name:</b>
+                        ${escapeHTML(
+                            user.name
+                        )}
+
+                        <br><br>
+
+                        <b>Email:</b>
+                        ${escapeHTML(
+                            user.email
+                        )}
+
+                        <br><br>
+
+                        <b>Phone:</b>
+                        ${escapeHTML(
+                            user.phone ||
+                            "Not provided"
+                        )}
+
+                        <br><br>
+
+                        <b>Role:</b>
+                        ${escapeHTML(
+                            user.role
+                        )}
+
+                        <br><br>
+
+                        <b>Current Mode:</b>
+                        ${escapeHTML(
+                            user.mode ||
+                            "help"
+                        )}
+
+                        <br><br>
+
+                        <b>Joined:</b>
+                        ${dateFormat(
+                            user.createdAt
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <!-- REQUEST HISTORY -->
+
+                <div class="card">
+
+                    <h3>
+                        🆘 Help Request History
+                    </h3>
+
+
+                    ${
+                        created.length
+
+                        ?
+
+                        created
+                        .sort(
+                            (a,b)=>
+                            (b.createdAt||0) -
+                            (a.createdAt||0)
+                        )
+                        .map(
+                            r => `
+
+                            <div class="request">
+
+                                <div class="request-top">
+
+                                    <h4>
+                                        ${escapeHTML(
+                                            r.title
+                                        )}
+                                    </h4>
+
+                                    <span class="status ${
+                                        escapeHTML(
+                                            r.status
+                                        )
+                                    }">
+
+                                        ${escapeHTML(
+                                            r.status
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="meta">
+
+                                    ${escapeHTML(
+                                        r.category
+                                    )}
+
+                                    •
+
+                                    ${escapeHTML(
+                                        r.location
+                                    )}
+
+                                    •
+
+                                    ${dateFormat(
+                                        r.createdAt
+                                    )}
+
+                                </div>
+
+
+                                <div class="description">
+
+                                    ${escapeHTML(
+                                        r.description
+                                    )}
+
+                                </div>
+
+
+                                ${
+                                    r.volunteerName
+
+                                    ?
+
+                                    `
+                                    <div class="meta">
+
+                                        Volunteer:
+                                        ${escapeHTML(
+                                            r.volunteerName
+                                        )}
+
+                                    </div>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+                            </div>
+
+                            `
+                        ).join("")
+
+                        :
+
+                        `
+                        <div class="empty">
+
+                            No help requests created.
+
+                        </div>
+                        `
+
+                    }
+
+                </div>
+
+
+                <!-- VOLUNTEER HISTORY -->
+
+                <div class="card">
+
+                    <h3>
+                        🙋 Volunteer History
+                    </h3>
+
+
+                    ${
+                        tasks.length
+
+                        ?
+
+                        tasks
+                        .sort(
+                            (a,b)=>
+                            (b.createdAt||0) -
+                            (a.createdAt||0)
+                        )
+                        .map(
+                            r => `
+
+                            <div class="request">
+
+                                <div class="request-top">
+
+                                    <h4>
+                                        ${escapeHTML(
+                                            r.title
+                                        )}
+                                    </h4>
+
+                                    <span class="status ${
+                                        escapeHTML(
+                                            r.status
+                                        )
+                                    }">
+
+                                        ${escapeHTML(
+                                            r.status
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="meta">
+
+                                    Requester:
+                                    ${escapeHTML(
+                                        r.requesterName
+                                    )}
+
+                                    <br>
+
+                                    Location:
+                                    ${escapeHTML(
+                                        r.location
+                                    )}
+
+                                </div>
+
+                            </div>
+
+                            `
+                        ).join("")
+
+                        :
+
+                        `
+                        <div class="empty">
+
+                            No volunteer tasks.
+
+                        </div>
+                        `
+                    }
+                </div>
+                <div class="card">
+                    <h3>
+                        📊 Offer Statistics
+                    </h3>
+                    <div class="meta">
+                        Total Offers:
+                        <b>
+                            ${totalOffers}
+                        </b>
+                        <br><br>
+                        Accepted Offers:
+                        <b>
+                            ${acceptedOffers}
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        `;
+    $("closeModal").onclick =
+        () => {
+
+            $("modalArea")
+                .innerHTML = "";
+
+        };
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+/* =====================================================
+   ADMIN BLOCK / UNBLOCK
+===================================================== */
+
+async function toggleUser(uid){
+
+    try{
+
+        const snapshot =
+            await get(
+                ref(
+                    db,
+                    "users/" +
+                    uid
+                )
+            );
+        const user =
+            snapshot.val();
+        const status =
+            user.status === "blocked"
+            ?
+            "active"
+            :
+            "blocked";
+
+
+        await update(
+            ref(
+                db,
+                "users/" +
+                uid
+            ),
+            {
+                status:
+                    status
+            }
+        );
+
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN DELETE REQUEST
+===================================================== */
+
+async function adminDeleteRequest(id){
+
+    if(
+        !confirm(
+            "Delete this help request?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        await remove(
+            ref(
+                db,
+                "helpRequests/" +
+                id
+            )
+        );
+
+
+        alert(
+            "Request deleted."
+        );
+
+    }
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
+
+/* =====================================================
+   BUTTON BINDING
+===================================================== */
+
+function bindButtons(){
+    document
+    .querySelectorAll(
+        "[data-accept]"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () => {
+
+                    const [
+                        requestId,
+                        volunteerId
+                    ] =
+                    button
+                    .dataset
+                    .accept
+                    .split("|");
+                    acceptVolunteer(
+                        requestId,
+                        volunteerId
+                    );
+                };
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-chat]"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () =>
+                openChat(
+                    button.dataset.chat
+                );
+
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-volchat]"
+    )
+    .forEach(
+        button => {
+            button.onclick =
+                () =>
+                openChat(
+                    button.dataset.volchat,
+                    true
+                );
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-complete]"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () =>
+                completeRequest(
+                    button.dataset.complete
+                );
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-offer]"
+    )
+    .forEach(
+        button => {
+            button.onclick =
+                () =>
+                offerHelp(
+                    button.dataset.offer
+                );
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-viewuser]"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () =>
+                viewUser(
+                    button.dataset.viewuser
+                );
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-blockuser]"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () =>
+                toggleUser(
+                    button.dataset.blockuser
+                );
+
+        }
+    );
+    document
+    .querySelectorAll(
+        "[data-deleterequest]"
+    )
+    .forEach(
+        button => {
+            button.onclick =
+                () =>
+                adminDeleteRequest(
+                    button.dataset.deleterequest
+              );
+        }
+    );
+}
+/* =====================================================
+   NAVIGATION BUTTONS
+===================================================== */
+
+document
+.getElementById("app")
+.addEventListener(
+    "click",
+    event => {
+        if(
+            event.target.id ===
+            "logoutBtn"
+        ){
+            signOut(auth);
+        }
+        if(
+            event.target.id ===
+            "accountBtn"
+        ){
+            accountPage();
+        }
+    }
+);
+/* =====================================================
+   START
+===================================================== */
+
 landing();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
